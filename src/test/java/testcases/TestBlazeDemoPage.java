@@ -17,7 +17,6 @@ import com.relevantcodes.extentreports.LogStatus;
 
 import factory.BuildFactory;
 import pages.BlazeDemoPage;
-
 import utility.ApiAppUtils;
 import utility.AppUtils;
 import utility.Helper;
@@ -45,7 +44,7 @@ public class TestBlazeDemoPage {
 		logger.log(LogStatus.PASS, "Travel Agency page is successfully loaded");
 		logger.log(LogStatus.INFO, logger.addScreenCapture(Helper.captuteScreenshot(driver, "validation")));
 	}
-	
+	/*
 	@Test(groups = {"CRITICAL"}, priority=2, description="verify whether user has landed to Travel Agency Welcome Page by validating the url and title")
 	public void verifyWelcomePage() throws Exception {
 		BlazeDemoPage wp=new BlazeDemoPage();
@@ -64,7 +63,7 @@ public class TestBlazeDemoPage {
 		Assert.assertEquals(wp.getCurrentURL(), BuildFactory.ConfigObject().getFindFlightsUrl(), "User not navigated to reservation page");
 		logger.log(LogStatus.PASS, "User could successfully navigate to Reservatipon page");
 	}
-	
+	*/
 	@AfterTest
 	public void closeTest() throws IOException {
 		AppUtils.quitDriver();
