@@ -7,7 +7,7 @@
     </packages>--> 
     
     <classes>
-      <class name="testcases.WHReviewTest"/>
+      <class name="testcases.WHReviewTest "/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
