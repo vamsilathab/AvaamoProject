@@ -8,6 +8,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import driverFactory.DriverBase;
@@ -29,9 +31,17 @@ public class AppUtils extends DriverBase implements LocatorUtils {
     public static WebDriverWait getWebDriverWait () {
         return new WebDriverWait(getDriver(browser), 60);
     }
+    
+    public static Actions getActions () {
+        return new Actions(getDriver());
+    }
 
+    
+    public static void sleep(int millis) throws InterruptedException {
+    	Thread.sleep(millis);
+    }
     public static WebElement getWebElement (String primaryLocator) {
-        try {
+        try { 	
             return findElement(primaryLocator);
         } catch (NoSuchElementException e) {
             logger.error("Element with locators not found : " + primaryLocator);
@@ -42,7 +52,6 @@ public class AppUtils extends DriverBase implements LocatorUtils {
 	private static WebElement findElement (String locator) {
 	
         Map<By, String> locatorsMap = new LinkedHashMap<>();
-        locatorsMap.put(By.cssSelector("[data-auto-id='" + locator + "']"), "dataAutoID");
         locatorsMap.put(By.cssSelector(locator), "cssSelector");
         locatorsMap.put(By.xpath(locator), "xpath");
         locatorsMap.put(By.id(locator), "id");
@@ -50,9 +59,9 @@ public class AppUtils extends DriverBase implements LocatorUtils {
         locatorsMap.put(By.linkText(locator), "linkText");
 
         for (Map.Entry<By, String> entry : locatorsMap.entrySet()) {
-            try {
+            try {           	
                 WebElement element = getDriver().findElement(entry.getKey());
-               // System.out.println("Fetching element with the locator : " + locator + " by --> " + entry.getValue());
+                System.out.println("Fetching element with the locator : " + locator + " by --> " + entry.getValue());
                 return element;
             } catch (NoSuchElementException ignored) {
             }

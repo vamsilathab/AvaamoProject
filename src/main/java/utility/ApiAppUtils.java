@@ -12,4 +12,8 @@ public class ApiAppUtils {
 		return response.getStatusCode();
 	}
 	
+	public static void main(String[] args) {
+		
+	}
+	
 }

@@ -1,6 +1,7 @@
 package dataProvider;
 
 import java.io.FileInputStream;
+import java.util.Base64;
 import java.util.Properties;
 
 
@@ -20,25 +21,29 @@ public class ConfigDataProvider {
 	}
 	
 	public  String getApplicationUrl() {
-		String url=prop.getProperty("welcomePageUrl");
+		String url=prop.getProperty("TestInsurancePageUrl");
 		return url;
 	}
 	
-	public  String getFindFlightsUrl() {
-		String url=prop.getProperty("findFlightsUrl");
-		return url;
+	public String getEncodedValue() {
+		String encodeVal=prop.getProperty("password_encode");
+		return encodeVal;
 	}
 	
-	public  String getPurchaseUrl() {
-		String url=prop.getProperty("purchaseUrl");
-		return url;
+	public String getEmail() {
+		String encodeVal=prop.getProperty("email");
+		return encodeVal;
+	}	
+	
+	public String getFirstName() {
+		String encodeVal=prop.getProperty("firstName");
+		return encodeVal;
 	}
 	
-	public  String getConfirmationUrl() {
-		String url=prop.getProperty("confirmationUrl");
-		return url;
+	public String getDecodedValue() {
+		Base64.Decoder decoder = Base64.getDecoder();  
+       return new String(decoder.decode(getEncodedValue()));
 	}
-	
 	
 	
 			
