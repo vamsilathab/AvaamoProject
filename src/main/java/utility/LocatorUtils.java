@@ -21,7 +21,9 @@ public interface LocatorUtils {
 	//REVIEW PAGE
 	public static final String REVIEW_PAGE_HEADER = "//h4[text()='Test Insurance Company']";
 	public static final String POLICY_DROPDOWN = "//div[contains(@class, 'dropdown')]//span[contains(text(),'Select')]";
+	
 	public static final String REVIEW_TEXT = "//textarea[contains(@placeholder,'Write your review')]";
+	public static final String REVIEW_TEXT_COUNT = "//div[contains(@class, 'count')]/span";
 	public static final String SUBMIT = "//div[text()='Submit']";
 	public static final String REVIEW_CONFIRMATION_MSG ="//h4[text()='Your review has been posted.']";
 	public static final String CONTINUE_BUTTON = "//div[text()='Continue']";

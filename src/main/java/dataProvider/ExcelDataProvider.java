@@ -7,7 +7,7 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
 
-//all the inputs can be passed from an excel instead of hardcoding in the scripts.
+//alternatively input can also be passed from an excel instead of hardcoding / inputing from properties file in the scripts.
 public class ExcelDataProvider {
 	public XSSFWorkbook wb;	
 	File f;

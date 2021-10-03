@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="BlazeDemoSuite" parallel="tests">
-  <test  thread-count="4" name="BlazeDemoTest" >
+<suite name="WalletHubReviewTests" parallel="tests">
+  <test  name="WalletHubReviewTest" >
    <!--  <packages>
       <package name="testcases"/>
     </packages>--> 
     
     <classes>
-      <class name="testcases.TestBlazeDemoPage"/>
-     
+      <class name="testcases.WHReviewTest"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

@@ -33,11 +33,21 @@ public class ConfigDataProvider {
 	public String getEmail() {
 		String encodeVal=prop.getProperty("email");
 		return encodeVal;
-	}	
+	}
+	
+	public String getUserName() {
+		return prop.getProperty("userName");	
+	}
+	
+	
 	
 	public String getFirstName() {
 		String encodeVal=prop.getProperty("firstName");
 		return encodeVal;
+	}
+	
+	public String getReviewText() {
+		return prop.getProperty("reviewText");
 	}
 	
 	public String getDecodedValue() {

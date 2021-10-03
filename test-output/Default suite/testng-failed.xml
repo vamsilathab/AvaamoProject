@@ -3,13 +3,20 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="testcases.InsuranceHomePageTest">
+      <class name="testcases.WHReviewTest">
         <methods>
-          <include name="verifyWelcomePage"/>
-          <include name="closeTest"/>
+          <include name="validateReview"/>
           <include name="setUp"/>
+          <include name="closeTest"/>
         </methods>
-      </class> <!-- testcases.InsuranceHomePageTest -->
+      </class> <!-- testcases.WHReviewTest -->
+      <class name="testcases.WHReviewPageTest">
+        <methods>
+          <include name="verifyReviewPageHeaded"/>
+          <include name="setUp"/>
+          <include name="closeTest"/>
+        </methods>
+      </class> <!-- testcases.WHReviewPageTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

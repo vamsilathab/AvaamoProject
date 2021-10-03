@@ -35,6 +35,10 @@ public class AppUtils extends DriverBase implements LocatorUtils {
     public static Actions getActions () {
         return new Actions(getDriver());
     }
+    
+    public static Select select(WebElement ele) {
+        return new Select(ele);
+    }
 
     
     public static void sleep(int millis) throws InterruptedException {

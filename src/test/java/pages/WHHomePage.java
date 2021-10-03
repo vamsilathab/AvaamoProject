@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -10,8 +11,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import dataProvider.ExcelDataProvider;
 import factory.BuildFactory;
 import static utility.AppUtils.*;
+import static utility.LocatorUtils.REVIEW_CONFIRMATION_MSG;
 
-public class WalletHubHomePage { 
+public class WHHomePage { 
 	
 
 	public String getApplicationTitle() {
@@ -48,12 +50,19 @@ public class WalletHubHomePage {
 	}
 	
 	public void provideUserRating() throws InterruptedException {
-		if(goToReview()) {
+		if(getWebElement(RATING_BUTTON).isDisplayed()) {
 			getActions().moveToElement(getWebElement(RATING_FOUR)).build().perform();
-			sleep(2000); // wait to see the rating selection is made and stars are highlighted.
+			sleep(2000); // wait to see the rating is selected and stars are highlighted.
 			getActions().moveToElement(getWebElement(RATING_FOUR)).click().build().perform();
 			
 		}
+	}
+	
+	public boolean verifySubmittedReview(String username) throws InterruptedException {		
+		((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", getWebElement(CURRENT_REVIEW));
+		Thread.sleep(2000);
+		getWebDriverWait(20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(CURRENT_REVIEW)));
+		return getWebElement(CURRENT_REVIEW).isDisplayed() && getWebElement("//span[text()='@"+username+"']").isDisplayed();
 	}
 	
 }
