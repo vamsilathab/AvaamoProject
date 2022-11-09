@@ -1,38 +1,38 @@
 package dataProvider;
 
-import java.io.File;
-import java.io.FileInputStream;
-
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import org.apache.poi.EncryptedDocumentException;
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.*;
 
-//alternatively input can also be passed from an excel instead of hardcoding / inputing from properties file in the scripts.
 public class ExcelDataProvider {
-	public XSSFWorkbook wb;	
-	File f;
 	
-	public ExcelDataProvider(){
-		String sheetName = "";
-		try(
-			FileInputStream fis = new FileInputStream(new File("--Use input file path--"));
-			XSSFWorkbook wbb = new XSSFWorkbook(fis);
-			) {
-			 Sheet sh = wbb.getSheet(sheetName);
-		} 
-		catch (Exception e) {
-			System.out.println("Error details: "+e.getMessage());
-		}		
-	}
-	
-	public  String getSheetData(int sheetIndex, int row, int column) {
-		String data = wb.getSheetAt(sheetIndex).getRow(row).getCell(column).getStringCellValue();
-		return data;
-	}
-	
-	public  String getData(String sheetName, int row, int column) {
-		String data = wb.getSheet(sheetName).getRow(row).getCell(column).getStringCellValue();
-		return data;
-	}
-		
+	public static String[][] readTestData(String file, String sheetName) {
+        String[][] data = null;
+        try (
+                InputStream fis = Files.newInputStream(Paths.get(file));
+                Workbook wb = WorkbookFactory.create(fis)
+        ) {
+            Sheet sh = wb.getSheet(sheetName);
+            Cell cell;
+            int rowCnt = 0;
+            if (sh != null) {
+                rowCnt = sh.getLastRowNum();               
+                int colCnt = sh.getRow(0).getLastCellNum();
+                data = new String[rowCnt][colCnt];
+                for (int i = 0; i < rowCnt; i++) {
+                    for (int j = 0; j < colCnt; j++) {
+                        cell = sh.getRow(i + 1).getCell(j, Row.MissingCellPolicy.CREATE_NULL_AS_BLANK);               
+                                data[i][j] = cell.getStringCellValue();   
+                    }
+                }
+            }
+        } catch (IOException | EncryptedDocumentException | InvalidFormatException e) {
+            System.out.println(e.getMessage());
+        }
+        return data;
+    }
 }

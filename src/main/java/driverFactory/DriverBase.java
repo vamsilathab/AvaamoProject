@@ -14,12 +14,11 @@ import org.testng.annotations.BeforeTest;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-
 public class DriverBase {
 	private static final Logger logger = Logger.getLogger(DriverBase.class);
 	 static WebDriver driver;
  
-	 @BeforeMethod(alwaysRun = true)
+	
 	public static WebDriver getDriver(String browser) {
 		 if(driver== null) {
 			 if(browser.equalsIgnoreCase("Chrome")) {		
@@ -36,7 +35,7 @@ public class DriverBase {
 				return driver;	
 	 }
 	 
-	 @AfterMethod(alwaysRun = true)
+	@AfterTest(alwaysRun=true)
 	public static void quitDriver() {
 		driver.quit();
 	}

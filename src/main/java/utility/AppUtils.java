@@ -1,8 +1,9 @@
 package utility;
 
+import static utility.AppUtils.*;
+
 import java.util.LinkedHashMap;
 import java.util.Map;
-
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -15,7 +16,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import driverFactory.DriverBase;
 
 
-public class AppUtils extends DriverBase implements LocatorUtils {
+public class AppUtils extends DriverBase  {
 	protected static final Logger logger = Logger.getLogger(AppUtils.class);
 	public static final String browser = "chrome"; //hardcoded browser for testing
 			
@@ -32,7 +33,7 @@ public class AppUtils extends DriverBase implements LocatorUtils {
         return new WebDriverWait(getDriver(browser), 60);
     }
     
-    public static Actions getActions () {
+    public static Actions getActions () { 
         return new Actions(getDriver());
     }
     
@@ -52,7 +53,7 @@ public class AppUtils extends DriverBase implements LocatorUtils {
             }
         throw new NoSuchElementException("Element with locators not found : " + primaryLocator);
     }
-	
+ 	
 	private static WebElement findElement (String locator) {
 	
         Map<By, String> locatorsMap = new LinkedHashMap<>();
@@ -61,7 +62,8 @@ public class AppUtils extends DriverBase implements LocatorUtils {
         locatorsMap.put(By.id(locator), "id");
         locatorsMap.put(By.className(locator), "className");
         locatorsMap.put(By.linkText(locator), "linkText");
-
+        locatorsMap.put(By.partialLinkText(locator), "linkText");
+        
         for (Map.Entry<By, String> entry : locatorsMap.entrySet()) {
             try {           	
                 WebElement element = getDriver().findElement(entry.getKey());
