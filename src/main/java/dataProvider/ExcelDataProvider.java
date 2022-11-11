@@ -25,8 +25,11 @@ public class ExcelDataProvider {
                 data = new String[rowCnt][colCnt];
                 for (int i = 0; i < rowCnt; i++) {
                     for (int j = 0; j < colCnt; j++) {
-                        cell = sh.getRow(i + 1).getCell(j, Row.MissingCellPolicy.CREATE_NULL_AS_BLANK);               
-                                data[i][j] = cell.getStringCellValue();   
+                        cell = sh.getRow(i + 1).getCell(j, Row.MissingCellPolicy.CREATE_NULL_AS_BLANK);  
+                        cell.setCellType(Cell.CELL_TYPE_STRING);
+
+                            data[i][j] = cell.getStringCellValue();
+
                     }
                 }
             }

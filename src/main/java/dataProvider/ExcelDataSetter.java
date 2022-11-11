@@ -36,4 +36,19 @@ public class ExcelDataSetter {
 		}
 		return metaData;
 	}
+	
+	public static Map<String, ExcelPojo> renewPolicyData(String[][] excelData)  {
+		metaData = new HashMap<String, ExcelPojo>();
+		for(int i = 0; i < excelData.length; i++)	{
+			xlsPojo = new ExcelPojo(); 
+			xlsPojo.setPolicyNo(excelData[i][1]);
+			xlsPojo.setRegistrationNo(excelData[i][2]);
+			xlsPojo.setMobileNo(excelData[i][3]);
+			xlsPojo.setEmail(excelData[i][4]);
+			xlsPojo.setOption(excelData[i][5]);
+			
+			metaData.put(excelData[i][0], xlsPojo);
+		}
+		return metaData;
+	}
 }

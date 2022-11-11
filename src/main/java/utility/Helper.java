@@ -13,10 +13,11 @@ public class Helper {
 	public static String captuteScreenshot(WebDriver driver, String screenshotname) throws IOException {
 		String errflpath;
 		TakesScreenshot ts = (TakesScreenshot) driver;
+		File destFile = new File("./Screenshots/"+screenshotname+System.currentTimeMillis()+".png");
 		File srcFile = ts.getScreenshotAs(OutputType.FILE);
 
 		//specify project path instead
-		File destFile = new File("./Screenshots/"+screenshotname+System.currentTimeMillis()+".png");
+
 		try {
 			
 			FileUtils.copyFile(srcFile, destFile);

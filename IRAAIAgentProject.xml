@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="IRAAIAgentTests" parallel="tests">
-  <test name="IRAAIProjectTests" >
-   <!--  <packages>
-      <package name="testcases"/>
-    </packages>--> 
-   
+  <!-- 	<listeners>
+		<listener class-name="listeners.ExtentReportNG" />
+	</listeners>
+	-->
+ 	 <test name="IRAAIProjectTests" >
+
     <classes>
       <class name="testcases.IRAAIAgentTest"/>
     </classes>

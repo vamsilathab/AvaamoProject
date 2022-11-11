@@ -10,6 +10,12 @@ public class ExcelPojo {
 		private String test;
 		private String input;
 		private String output;
+		private String policyNo;		
+		private String registrationNo;
+		private String mobileNo;
+		private String email;
+		private String option;
+		
 		
 		public String getFirstName() {
 			return firstName;
@@ -59,5 +65,35 @@ public class ExcelPojo {
 		public void setOutput(String output) {
 			this.output = output;
 		}
-
+		public String getPolicyNo() {
+			return policyNo;
+		}
+		public void setPolicyNo(String policyNo) {
+			this.policyNo = policyNo;
+		}
+		public String getRegistrationNo() {
+			return registrationNo;
+		}
+		public void setRegistrationNo(String registrationNo) {
+			this.registrationNo = registrationNo;
+		}
+		public String getMobileNo() {
+			return mobileNo;
+		}
+		public void setMobileNo(String mobileNo) {
+			this.mobileNo = mobileNo;
+		}
+		public String getEmail() {
+			return email;
+		}
+		public void setEmail(String email) {
+			this.email = email;
+		}
+		
+		public String getOption() {
+			return option;
+		}
+		public void setOption(String option) {
+			this.option = option;
+		}
 }
